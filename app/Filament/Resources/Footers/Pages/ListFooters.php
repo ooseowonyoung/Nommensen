@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Footers\Pages;
 
 use App\Filament\Resources\Footers\FooterResource;
-use App\Models\Footer;
+use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListFooters extends ListRecords
@@ -12,6 +12,8 @@ class ListFooters extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [];
+        return [
+            CreateAction::make(),
+        ];
     }
 }

@@ -35,11 +35,6 @@ class FooterResource extends Resource
         return FootersTable::configure($table);
     }
 
-    public static function canCreate(): bool
-    {
-        return Footer::count() === 0;
-    }
-
     public static function getRelations(): array
     {
         return [];

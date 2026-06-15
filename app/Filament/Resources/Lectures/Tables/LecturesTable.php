@@ -28,7 +28,10 @@ class LecturesTable
 
                 TextColumn::make('nidn')
                     ->label('NIDN')
-                    ->searchable(),
+                    ->searchable()
+                    ->copyable()
+                    ->sortable()
+                    ->copyMessage('NIDN berhasil disalin!'),
 
                 TextColumn::make('pendidikan')
                     ->label('Pendidikan')
