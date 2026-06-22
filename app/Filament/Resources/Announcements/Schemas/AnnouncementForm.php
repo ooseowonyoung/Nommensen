@@ -2,8 +2,9 @@
 
 namespace App\Filament\Resources\Announcements\Schemas;
 
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 
 class AnnouncementForm
@@ -13,15 +14,28 @@ class AnnouncementForm
         return $schema
             ->components([
                 TextInput::make('title')
-                    ->required(),
-                Textarea::make('content')
+                    ->label('Judul')
+                    ->required()
+                    ->maxLength(255)
+                    ->placeholder('contoh: Jadwal UAS Semester Ganjil 2025/2026')
+                    ->columnSpanFull(),
+
+                RichEditor::make('content')
+                    ->label('Isi Pengumuman')
+                    ->toolbarButtons([
+                        'bold',
+                        'italic',
+                        'underline',
+                        'bulletList',
+                        'orderedList',
+                        'link',
+                        'h3',
+                    ])
                     ->required()
                     ->columnSpanFull(),
-                TextInput::make('users_id')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('slug')
-                    ->required(),
+
+                Hidden::make('slug'),
+                Hidden::make('users_id'),
             ]);
     }
 }
